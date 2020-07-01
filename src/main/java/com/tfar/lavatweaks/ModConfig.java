@@ -18,6 +18,12 @@ public class ModConfig {
   @Config.Name("Preferred basalt cobblestone")
   public static String basalt_cobblestone = "lavatweaks:basalt_cobblestone";
 
+  @Config.Name("Enable Basalt Generators")
+  public static boolean enable_basalt = true;
+
+  @Config.Name("Enable Lava Proximity Burning")
+  public static boolean enable_proximity_burning = true;
+
   @SubscribeEvent
   public static void configchanged(ConfigChangedEvent e){
     if (e.getModID().equals(LavaTweaks.MODID)){

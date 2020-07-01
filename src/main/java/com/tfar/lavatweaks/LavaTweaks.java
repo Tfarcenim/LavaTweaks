@@ -1,7 +1,6 @@
 package com.tfar.lavatweaks;
 
 import com.tfar.lavatweaks.block.BasaltBlock;
-import com.tfar.lavatweaks.block.TweakedFlowingLava;
 import com.tfar.lavatweaks.block.TweakedStaticLava;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -68,8 +67,9 @@ public class LavaTweaks
   public static void blocks(RegistryEvent.Register<Block> e){
     register(new BasaltBlock().setCreativeTab(CreativeTabs.BUILDING_BLOCKS).setTranslationKey("basalt").setHardness(1.5F).setResistance(10.0F),"basalt",e.getRegistry());
     register(new Block(Material.ROCK).setCreativeTab(CreativeTabs.BUILDING_BLOCKS).setTranslationKey("basalt_cobblestone").setHardness(2.0F).setResistance(10.0F),"basalt_cobblestone",e.getRegistry());
-    register(new TweakedStaticLava().disableStats().setHardness(100.0F).setLightLevel(1.0F).setTranslationKey("lava"),"minecraft","lava",e.getRegistry());
-    register(new TweakedFlowingLava().disableStats().setHardness(100.0F).setLightLevel(1.0F).setTranslationKey("flowing_lava"),"minecraft","flowing_lava",e.getRegistry());
+    if (ModConfig.enable_basalt) {
+      register(new TweakedStaticLava().disableStats().setHardness(100.0F).setLightLevel(1.0F).setTranslationKey("lava"), "minecraft", "lava", e.getRegistry());
+    }
   }
 
   @SubscribeEvent

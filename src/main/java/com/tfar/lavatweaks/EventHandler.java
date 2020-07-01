@@ -62,6 +62,7 @@ public class EventHandler {
   }
 
   public static boolean checkForLava(EntityPlayer player) {
+    if (!ModConfig.enable_proximity_burning)return false;
     BlockPos pos = player.getPosition().up();
     int x = pos.getX();
     int y = pos.getY();

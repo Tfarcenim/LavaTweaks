@@ -7,7 +7,7 @@ import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 
 public class CapabilityProvider implements ICapabilitySerializable<NBTTagCompound> {
 
-  private PlayerLavaHandler playerMana = new PlayerLavaHandler();
+  private PlayerLavaHandler playerLavaHandler = new PlayerLavaHandler();
 
   @Override
   public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
@@ -17,7 +17,7 @@ public class CapabilityProvider implements ICapabilitySerializable<NBTTagCompoun
   @Override
   public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
     if (capability == PlayerProperties.PLAYER_NETHER_TIMER) {
-      return (T) playerMana;
+      return (T) playerLavaHandler;
     }
     return null;
   }
@@ -25,13 +25,13 @@ public class CapabilityProvider implements ICapabilitySerializable<NBTTagCompoun
   @Override
   public NBTTagCompound serializeNBT() {
     NBTTagCompound nbt = new NBTTagCompound();
-    playerMana.save(nbt);
+    playerLavaHandler.save(nbt);
     return nbt;
   }
 
   @Override
   public void deserializeNBT(NBTTagCompound nbt) {
-    playerMana.load(nbt);
+    playerLavaHandler.load(nbt);
   }
 }
 
